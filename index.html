@@ -1,0 +1,301 @@
+<!--
+=========================================================
+Material Dashboard - v2.1.2
+=========================================================
+
+Product Page: https://www.creative-tim.com/product/material-dashboard
+Copyright 2020 Creative Tim (https://www.creative-tim.com)
+Coded by Creative Tim
+
+=========================================================
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title></title>
+
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+    />
+    <link href="scr/css/material-dashboard.css" rel="stylesheet" />
+  </head>
+
+  <body class="">
+    <div class="wrapper">
+      <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">                 
+                    <h3 class="card-title" id="titulo"></h3>
+                    <h3 class="card-title">Parâmetros:</h4>
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">Selecione uma Instância: </h4>
+              
+                    <select name="instancia" id="instancia" class="form-control">
+                     
+                    </select>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="text-primary">
+                          <th >Função Objetivo</th>
+                          <th scope="col">Obj.1</th>
+                          <th scope="col">Obj.2</th>
+                          <th scope="col">Obj.3</th>
+                          <th scope="col">GAP(%)</th>
+                          <th scope="col">GAP</th>
+                          <th scope="col">Tempo Exe.</th>
+                          <th scope="col">Máquinas</th>
+                          <th scope="col">Tarefas</th>
+                          <th scope="col">Veículos</th>
+                          <th scope="col">Capacidade Total</th>
+                          <th scope="col">Demanda Total</th>
+                          <th scope="col">Priority Factor</th>
+                          <th scope="col">Range Factor R</th>
+                          <th scope="col">Raios</th>
+                          <th scope="col">Círculos</th>
+                          <th scope="col">Setup<br> Min-Max</th>
+                          <th scope="col">TP Min-Max</th>
+                          <th scope="col">Demanda Min-Max</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td id='fo'></td>
+                            <td id='obj1'></td>
+                            <td id='obj2'></td>
+                            <td id='obj3'></td>
+                            <td id='gap1'></td>
+                            <td id='gap2'></td>
+                            <td id='tempo'></td>
+                            <td id='maquinas'></td> 
+                            <td id='tarefas'></td>
+                            <td id='veiculos'></td>
+                            <td id='capacidade_t'></td> 
+                            <td id='demanda_t'></td>    
+                            <td id='pf'></td>    
+                            <td id='rf'></td>    
+                            <td id='raio'></td>    
+                            <td id='circulo'></td>   
+                            <td id='setup'></td>    
+                            <td id='tp'></td>    
+                            <td id='demanda'></td>          
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row aumentar" >
+              <div class="col-lg-6 col-md-6 col-sm-6 coluna inst">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class="card-title">Instância: Localização e Demandas dos Clientes</h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="mapa_i"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 coluna inst">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class="card-title">Instância: Tempos de Processamentos por Máquinas</h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="tp_i"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 coluna inst">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class=" nav-tabs-title" style="display: inline;">Instância: Datas de Entregas das Tarefas</h3>
+                    <ul class="nav nav-tabs" style="display: inline; float: right;" data-tabs="tabs">
+                      <li class="nav-item" style="display: inline;">
+                        <a class="nav-link active datas_entrega_i" data-toggle="tab" style="display: inline;">
+                          <i class="material-icons">swap_vert</i> Ordenar
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div id="datas_entrega_i"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 coluna inst">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class=" nav-tabs-title" style="display: inline;">Instância: Demanda dos Clientes</h3>
+                    <ul class="nav nav-tabs" style="display: inline; float: right;" data-tabs="tabs">
+                      <li class="nav-item" style="display: inline;">
+                        <a class="nav-link active demandas_i" data-toggle="tab" style="display: inline;">
+                          <i class="material-icons">swap_vert</i> Ordenar
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div id="demandas_i"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row aumentar">
+              
+              <div class="col-lg-6 col-md-6 col-sm-6 coluna result">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class="card-title">Resultado: Rotas dos Veículos</h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="rotas_s"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 coluna result">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class="card-title">Resultado: Planejamento da Produção</h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="producao_s"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6  coluna result" >
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class=" nav-tabs-title" style="display: inline;">Resultado: Atrasos por Tarefa</h3>
+                    <ul class="nav nav-tabs" style="display: inline; float: right;" data-tabs="tabs">
+                      <li class="nav-item" style="display: inline;">
+                        <a class="nav-link active atraso_s" data-toggle="tab" style="display: inline;">
+                          <i class="material-icons">swap_vert</i> Ordenar
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div id="atraso_s"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-6 col-md-6 col-sm-6  coluna result" >
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class=" nav-tabs-title" style="display: inline;">Resultado: Tempo de Conclusão (Completion Time)</h3>
+                    <ul class="nav nav-tabs" style="display: inline; float: right;" data-tabs="tabs">
+                      <li class="nav-item" style="display: inline;">
+                        <a class="nav-link active completion_Time_s" data-toggle="tab" style="display: inline;">
+                          <i class="material-icons">swap_vert</i> Ordenar
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div id="completion_Time_s"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6  coluna result">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class=" nav-tabs-title" style="display: inline;">Resultado - Capacidade e Ocupação dos Veículos</h3>
+                    <ul class="nav nav-tabs" style="display: inline; float: right;" data-tabs="tabs">
+                      <li class="nav-item" style="display: inline;">
+                        <a class="nav-link active veiculos_i" data-toggle="tab" style="display: inline;">
+                          <i class="material-icons">swap_vert</i> Ordenar
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div id="veiculos_i"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6  coluna result">
+                <div class="card card-stats" style="margin-top: 15px; margin-bottom: 10px;">
+                  <div class="card-header card-header-primary">
+                    <h3 class="card-title">Resultado: Porcentagem por Objetivo </h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="objetivos_s"></div>
+                  </div>
+                </div>
+              </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fixed-plugin">
+      <div class="dropdown show-dropdown">
+        <a href="#" data-toggle="dropdown">
+          <i class="fa fa-cog fa-2x"> </i>
+        </a>
+        <ul class="dropdown-menu show">
+          <li class="header-title"> Exibir:</li>
+          <li class="header-title">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" checked id="inst">
+                <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+                <quote>INSTÂNCIA</quote>
+              </label>
+            </div>
+          </li>
+          <li class="header-title">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" checked id="result">
+                <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+                <quote>RESULTADOS</quote>
+              </label>
+            </div>
+          </li>
+  <br>
+          <li class="header-title"> Tamanho dos Gráficos:</li>
+          <li class="button-container">
+            <a class="btn btn-primary btn-block" id='grande'>Grande</a>
+            <a class="btn btn-primary btn-block"id='medio'>Médio</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script type="text/javascript" src="scr/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scr/js/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="scr/js/graficos.js"></script>
+    <script type="text/javascript" src="scr/js/input.js"></script>
+    <script type="text/javascript" src="scr/js/script.js"></script>
+    
+
+  </body>
+</html>
