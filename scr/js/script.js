@@ -1,7 +1,7 @@
 $(document).ready(function(){
     //variaveis grafico 1 - mapa dos clientes.
     //cores deposito + tarefas 
-    var id = 1;
+    var id = 0;
     
     for(var i = 0; i < instancias.length; i++){
       var nome = sprintf(instancias[i].nome);

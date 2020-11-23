@@ -256,6 +256,36 @@ Plotly.relayout('datas_entrega_i', {
 
 function grafico_planejamento(instancias, indice){
     var barras_tarefas = [];
+    for(var i = 0; i < instancias[indice].rotasSequencia.length; i++){
+      for(var j = 0; j < instancias[indice].rotasSequencia[i].length; j++){
+
+          barras_tarefas.push({
+              x: [instancias[indice].rotasSequencia[i][j].tempo],
+              y: [instancias[indice].rotasSequencia[i][j].veiculo],
+              orientation: "h",
+              type: "bar",
+              marker: {
+                //color: instancias[indice].rotasSequencia[i][j].cor
+                color: instancias[indice].rotasSequencia[i][j].tarefa != 0 ? instancias[indice].cores_deposito_tarefas[instancias[indice].rotasSequencia[i][j].tarefa] : "#FFF"
+
+              },
+              showlegend: instancias[indice].rotasSequencia[i][j].tarefa != 0 ? true : false, //esconde ou mostra na legenda
+              //showlegend: true, //esconde ou mostra na legenda
+              legendgroup: instancias[indice].rotasSequencia[i][j].veiculo,
+              name: instancias[indice].rotasSequencia[i][j].tarefa != 0 ? instancias[indice].rotasSequencia[i][j].veiculo + ' T'+instancias[indice].rotasSequencia[i][j].tarefa : 'Start' ,
+              text: instancias[indice].rotasSequencia[i][j].tarefa != 0 ?'T'+instancias[indice].rotasSequencia[i][j].tarefa+'<br>'+'t: '+instancias[indice].rotasSequencia[i][j].tempo : 'start '+instancias[indice].rotasSequencia[i][j].tempo ,
+              textposition: "auto",
+              hoverinfo: "text",
+              hovertext: instancias[indice].rotasSequencia[i][j].tarefa != 0 ? 'T'+instancias[indice].rotasSequencia[i][j].tarefa+'<br>'+'D: ' + instancias[indice].rotasSequencia[i][j].dtEntrega : '',
+              insidetextanchor: "middle",
+          });
+
+      }
+   }
+  
+    
+    
+    
     for(var i = 0; i < instancias[indice].tps_setups.length; i++){
         for(var j = 0; j < instancias[indice].tps_setups[i].length; j++){
                   barras_tarefas.push({
@@ -268,7 +298,7 @@ function grafico_planejamento(instancias, indice){
                 },
                 showlegend: instancias[indice].tps_setups[i][j].tarefa != -1 ? true : false, //esconde ou mostra na legenda
                 legendgroup: 'M'+i,
-                name: instancias[indice].tps_setups[i][j].tarefa != -1 ? 'T'+instancias[indice].tps_setups[i][j].tarefa : '' ,
+                name: instancias[indice].tps_setups[i][j].tarefa != -1 ? 'M'+i+' T'+instancias[indice].tps_setups[i][j].tarefa : '' ,
                 text: instancias[indice].tps_setups[i][j].tarefa != -1 ?'T'+instancias[indice].tps_setups[i][j].tarefa+'<br>'+instancias[indice].tps_setups[i][j].tempo : instancias[indice].tps_setups[i][j].tempo ,
                 textposition: "auto",
                 hoverinfo: "text",
@@ -277,6 +307,9 @@ function grafico_planejamento(instancias, indice){
             });
         }
     }
+
+
+
     var layout2 = {
         barmode: "stack",
 
